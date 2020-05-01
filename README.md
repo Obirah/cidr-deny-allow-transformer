@@ -2,6 +2,9 @@
 This is a NPM library that allows you to transform a subset of denied CIDRs within a larger CIDR
 into a list of allowed CIDRs.
 
+## Less talk, more library
+`npm install cidr-deny-allow-transformer`
+
 ## Motivation
 If you're deploying infrastructure-as-code to AWS, you come across SecurityGroups with their
 corresponding ingress configuration. SecurityGroups can only be configured to allow but not to deny

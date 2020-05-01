@@ -1,8 +1,19 @@
 {
   "name": "cidr-deny-allow-transformer",
   "version": "1.0.0",
-  "description": "",
-  "keywords": [],
+  "description": "This is a NPM library that allows you to transform a subset of denied CIDRs within a larger CIDR into a list of allowed CIDRs.",
+  "keywords": [
+    "network",
+    "cidr",
+    "ip",
+    "aws",
+    "aws-cdk",
+    "aws-sdk",
+    "cdk",
+    "sdk",
+    "ingress",
+    "securitygroup"
+  ],
   "main": "dist/cidr-deny-allow-transformer.umd.js",
   "module": "dist/cidr-deny-allow-transformer.es5.js",
   "typings": "dist/types/cidr-deny-allow-transformer.d.ts",
