@@ -1,8 +1,8 @@
 import { cidr, ip } from 'node-cidr/dist'
 import { NumberInterval } from './number-interval'
 
-export default class CidrAllowDenyTransformer {
-  static findAllowedCidrs(fullCidr: string, denyCidrs: string[]): string[] {
+export class CidrAllowDenyTransformer {
+  static findAllowedCidrs(fullCidr: string, ...denyCidrs: string[]): string[] {
     const fullInterval = CidrAllowDenyTransformer.cidrToInterval(fullCidr)
     const deniedIntervals = denyCidrs.map(deniedCidr =>
       CidrAllowDenyTransformer.cidrToInterval(deniedCidr)

@@ -1,4 +1,4 @@
-import CidrAllowDenyTransformer from '../src/cidr-deny-allow-transformer'
+import { CidrAllowDenyTransformer } from '../src/cidr-deny-allow-transformer'
 
 describe('CidrAllowDenyTransformer', () => {
   const fullCidr = '192.160.0.0/12'
@@ -24,14 +24,17 @@ describe('CidrAllowDenyTransformer', () => {
   ]
 
   it('should calculate the allowed CIDRs correctly', () => {
-    const allowedCidrs = CidrAllowDenyTransformer.findAllowedCidrs(fullCidr, deniedCidrsWithinRange)
+    const allowedCidrs = CidrAllowDenyTransformer.findAllowedCidrs(
+      fullCidr,
+      ...deniedCidrsWithinRange
+    )
     expect(allowedCidrs).toEqual(expectedAllowedCidrs)
   })
 
   it('should not change the CIDRs when a completely different full range is specified', () => {
     const allowedCidrs = CidrAllowDenyTransformer.findAllowedCidrs(
       fullCidr,
-      deniedCidrsOutsideOfRange
+      ...deniedCidrsOutsideOfRange
     )
     expect(allowedCidrs).toEqual([fullCidr])
   })
