@@ -106,3 +106,12 @@ dist
 # IntelliJ
 .idea
 *.iml
+
+# From typescript library starter.
+node_modules
+.DS_Store
+.vscode
+compiled
+.awcache
+.rpt2_cache
+docs
