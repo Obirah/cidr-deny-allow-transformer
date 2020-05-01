@@ -1,11 +1,11 @@
 import { cidr, ip } from 'node-cidr/dist'
 import { NumberInterval } from './number-interval'
 
-export class CidrAllowDenyTransformer {
+export class CidrDenyAllowTransformer {
   static findAllowedCidrs(fullCidr: string, ...denyCidrs: string[]): string[] {
-    const fullInterval = CidrAllowDenyTransformer.cidrToInterval(fullCidr)
+    const fullInterval = CidrDenyAllowTransformer.cidrToInterval(fullCidr)
     const deniedIntervals = denyCidrs.map(deniedCidr =>
-      CidrAllowDenyTransformer.cidrToInterval(deniedCidr)
+      CidrDenyAllowTransformer.cidrToInterval(deniedCidr)
     )
 
     const allowedIntervals = deniedIntervals.reduce(
@@ -18,7 +18,7 @@ export class CidrAllowDenyTransformer {
 
     return ([] as string[]).concat(
       ...allowedIntervals.map(interval =>
-        CidrAllowDenyTransformer.ipRangeToCidrs(
+        CidrDenyAllowTransformer.ipRangeToCidrs(
           ip.toString(interval.start),
           ip.toString(interval.end)
         )
@@ -55,7 +55,7 @@ export class CidrAllowDenyTransformer {
         }
       }
       if (ipBytes.length === 4) {
-        return CidrAllowDenyTransformer.bytesToInt32(ipBytes)
+        return CidrDenyAllowTransformer.bytesToInt32(ipBytes)
       }
     }
     return undefined
@@ -63,7 +63,7 @@ export class CidrAllowDenyTransformer {
 
   private static ip32ToIp(ip32: number): string | undefined {
     return isFinite(ip32)
-      ? CidrAllowDenyTransformer.int32ToBytes(ip32 & 0xffffffff).join('.')
+      ? CidrDenyAllowTransformer.int32ToBytes(ip32 & 0xffffffff).join('.')
       : undefined
   }
 
@@ -80,16 +80,16 @@ export class CidrAllowDenyTransformer {
   }
 
   private static ipRangeToCidrs(firstIp: string, lastIp: string): string[] {
-    let firstIp32 = CidrAllowDenyTransformer.ipToIp32(firstIp)
-    const lastIp32 = CidrAllowDenyTransformer.ipToIp32(lastIp)
+    let firstIp32 = CidrDenyAllowTransformer.ipToIp32(firstIp)
+    const lastIp32 = CidrDenyAllowTransformer.ipToIp32(lastIp)
 
     const cidrs = []
     if (firstIp32 && lastIp32 && firstIp32 <= lastIp32) {
       while (lastIp32 >= firstIp32) {
-        const maxSize = CidrAllowDenyTransformer.maxBlock(firstIp32)
+        const maxSize = CidrDenyAllowTransformer.maxBlock(firstIp32)
         const maxDiff = 32 - Math.floor(Math.log(lastIp32 - firstIp32 + 1) / Math.log(2))
         const size = Math.max(maxSize, maxDiff)
-        cidrs.push(CidrAllowDenyTransformer.ip32ToIp(firstIp32) + '/' + size)
+        cidrs.push(CidrDenyAllowTransformer.ip32ToIp(firstIp32) + '/' + size)
         firstIp32 += Math.pow(2, 32 - size)
       }
     }

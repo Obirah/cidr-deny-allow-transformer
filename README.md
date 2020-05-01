@@ -22,10 +22,10 @@ dealing with SecurityGroups.
 ## Usage
 Import the transformer...
 ```
-import { CidrAllowDenyTransformer } from 'cidr-deny-allow-transformer';
+import { CidrDenyAllowTransformer } from 'cidr-deny-allow-transformer';
 ```
 
 ... and find your allowed CIRDs:
 ```
-const allowedCidrs = CidrAllowDenyTransformer.findAllowedCidrs('192.160.0.0/12', '192.162.0.0/18', '192.172.0.0/23', '192.172.56.0/21');
+const allowedCidrs = CidrDenyAllowTransformer.findAllowedCidrs('192.160.0.0/12', '192.162.0.0/18', '192.172.0.0/23', '192.172.56.0/21');
 ```
