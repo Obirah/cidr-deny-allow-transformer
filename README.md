@@ -3,7 +3,7 @@ NPM library that can be used to to transform a list of denied IPs within a CIDR 
 
 ## Motivation
 If you're deploying infrastructure-as-code to AWS, you come across SecurityGroups with their
-corresponding ingress configuration. Those can only be configured to allow but not to deny certain
+corresponding ingress configuration. SecurityGroups can only be configured to allow but not to deny certain
 traffic.
 
 In reality, you often want to deny a certain set of IPs (e.g. IPs of gateways that are exposed to
