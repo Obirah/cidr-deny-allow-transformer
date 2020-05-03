@@ -75,7 +75,7 @@
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 80,
+        "branches": 70,
         "functions": 90,
         "lines": 90,
         "statements": 90
@@ -131,6 +131,7 @@
     "typescript": "^3.0.3"
   },
   "dependencies": {
-    "node-cidr": "^1.0.0"
+    "node-cidr": "^1.0.0",
+    "number-interval": "^1.0.0"
   }
 }

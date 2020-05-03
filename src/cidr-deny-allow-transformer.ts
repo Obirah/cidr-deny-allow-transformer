@@ -1,5 +1,5 @@
 import { cidr, ip } from 'node-cidr/dist'
-import { NumberInterval } from './number-interval'
+import { NumberInterval } from 'number-interval'
 
 export class CidrDenyAllowTransformer {
   static findAllowedCidrs(fullCidr: string, ...denyCidrs: string[]): string[] {
