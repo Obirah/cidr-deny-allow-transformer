@@ -1,6 +1,6 @@
 {
   "name": "cidr-deny-allow-transformer",
-  "version": "1.1.0",
+  "version": "1.2.0-SNAPSHOT",
   "description": "This is a NPM library that allows you to transform a subset of denied CIDRs within a larger CIDR into a list of allowed CIDRs.",
   "keywords": [
     "network",
