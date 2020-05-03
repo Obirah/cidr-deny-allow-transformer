@@ -5,6 +5,8 @@ into a list of allowed CIDRs.
 ## Less talk, more library
 `npm install cidr-deny-allow-transformer`
 
+Keep track of the versions with the [changelog](https://github.com/Obirah/cidr-deny-allow-transformer/blob/master/CHANGELOG.md).
+
 ## Motivation
 If you're deploying infrastructure-as-code to AWS, you come across SecurityGroups with their
 corresponding ingress configuration. SecurityGroups can only be configured to allow but not to deny
@@ -13,7 +15,7 @@ certain traffic.
 In reality, you often want to deny certain CIDRs (e.g. those containing IPs of gateways that are
 exposed to the internet) while you want to allow the rest of a larger CIDR (e.g. you company network).
 
-With this small library you can do exactly that - pass a CIDR and a subset of denied CIDR and 
+With this small library you can do exactly that - pass a CIDR and a subset of denied CIDRs and 
 you'll get all allowed CIDRs.
 
 I recommend using this library, if you're using the [AWS-CDK](https://github.com/aws/aws-cdk) and are
